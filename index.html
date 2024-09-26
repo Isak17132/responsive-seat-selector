@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .seat {
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .seat.selected {
+            background-color: #6c7ae0;
+        }
+        .seat.occupied {
+            background-color: #444;
+            cursor: not-allowed;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .legend div {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+        }
+        .legend div span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .legend div span.free {
+            background-color: #ddd;
+        }
+        .legend div span.selected {
+            background-color: #6c7ae0;
+        }
+        .legend div span.occupied {
+            background-color: #444;
+        }
+        .responsive {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Seat</h1>
+    <div class="container responsive">
+        <!-- Row 1 -->
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+        <!-- Row 2 -->
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+
+        <!-- Row 3 -->
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+    </div>
+
+    <div class="legend">
+        <div><span class="free"></span>Free</div>
+        <div><span class="selected"></span>Selected</div>
+        <div><span class="occupied"></span>Occupied</div>
+    </div>
+
+    <script>
+        const seats = document.querySelectorAll('.seat:not(.occupied)');
+        seats.forEach(seat => {
+            seat.addEventListener('click', () => {
+                seat.classList.toggle('selected');
+            });
+        });
+    </script>
+</body>
+</html>
